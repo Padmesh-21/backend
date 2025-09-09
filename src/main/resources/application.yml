@@ -15,17 +15,17 @@ spring:
             enable: true
 
 server:
-  port: 8080
+  port: ${PORT:8080}   # ✅ fixed for Render
   servlet:
     context-path: /api
 
 app:
   jwt:
     secret: myVeryLongAndSecureJWTSecretKeyThatIsAtLeast256BitsLongForHMACSHA256Algorithm
-    expiration: 604800000  # 7 days instead of 1 day
+    expiration: 604800000
   ai:
     gemini:
-      api-key: AIzaSyBf9cbDiHXE1pR83hDyeMw_2QNZFSb4f_8
+      api-key: ${GEMINI_API_KEY}
       url: https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent
   resume:
     upload-dir: uploads/resumes
